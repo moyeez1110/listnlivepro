@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no"/>
+<meta name="description" content="Discover businesses, services, real estate, and local news in Choutuppal. Your city's digital revolution."/>
+<meta name="theme-color" content="#4169E1"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-title" content="Choutuppal"/>
+<meta property="og:title" content="Choutuppal 2.0 - Your Hyper-Local Super App"/>
+<meta property="og:description" content="Discover businesses, services, real estate, and local news in Choutuppal."/>
+<meta property="og:type" content="website"/>
+<title>Choutuppal 2.0 - Your Hyper-Local Super App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="dark">
+
+<!-- TOP NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="logo-icon">C</span>
+      <div>
+        <div class="logo-title">Choutuppal App</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#home" class="nav-active">Home</a>
+      <a href="#categories">Explore</a>
+      <a href="#news">News</a>
+      <a href="#community">Community</a>
+      <a href="#blog">Blog</a>
+      <a href="#dashboard">Dashboard</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+      <a class="btn-signin" href="#">Sign In</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="closeMobileMenu()">Home</a>
+    <a href="#categories" onclick="closeMobileMenu()">Explore</a>
+    <a href="#news" onclick="closeMobileMenu()">News</a>
+    <a href="#community" onclick="closeMobileMenu()">Community</a>
+    <a href="#blog" onclick="closeMobileMenu()">Blog</a>
+    <a href="#dashboard" onclick="closeMobileMenu()">Dashboard</a>
+    <a href="#">Sign In</a>
+  </div>
+</nav>
+
+<!-- PUSH NOTIFICATION BAR -->
+<div class="push-bar" id="pushBar">
+  <span class="push-icon">🔔</span>
+  <span class="push-text">చౌటుప్పల్ లోకల్ అప్‌డేట్స్ పొందండి — Enable notifications!</span>
+  <button class="push-allow" id="pushAllowBtn" onclick="requestNotification()">Allow</button>
+  <button class="push-close" onclick="closePushBar()">✕</button>
+</div>
+
+<!-- CAROUSEL BANNER -->
+<div class="carousel-wrap" id="carouselWrap">
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-slide slide-1">
+      <div class="slide-content">
+        <div class="slide-tag">🏪 New Listing</div>
+        <div class="slide-title">మీ బిజినెస్‌ని చౌటుప్పల్ లో List చేయండి!</div>
+        <div class="slide-desc">1000+ మంది చూస్తున్నారు — ఈ రోజే రిజిస్టర్ చేసుకోండి</div>
+        <a href="https://wa.me/919912353705?text=List my business" target="_blank" class="slide-btn">List Now</a>
+      </div>
+    </div>
+    <div class="carousel-slide slide-2">
+      <div class="slide-content">
+        <div class="slide-tag">🏠 Real Estate</div>
+        <div class="slide-title">చౌటుప్పల్ లో ప్రాపర్టీలు కొనండి &amp; అమ్మండి</div>
+        <div class="slide-desc">Best deals — plots, houses, commercial shops available</div>
+        <a href="#realestate" class="slide-btn">View Properties</a>
+      </div>
+    </div>
+    <div class="carousel-slide slide-3">
+      <div class="slide-content">
+        <div class="slide-tag">🎡 Spin &amp; Win</div>
+        <div class="slide-title">Daily Spin చేసి Coins గెలుచుకోండి!</div>
+        <div class="slide-desc">50 coins వరకు రోజూ గెలుచుకోవచ్చు — Free!</div>
+        <a href="#home" class="slide-btn">Spin Now</a>
+      </div>
+    </div>
+    <div class="carousel-slide slide-4">
+      <div class="slide-content">
+        <div class="slide-tag">💎 Premium Plan</div>
+        <div class="slide-title">మీ బిజినెస్‌ని Top లో చూపించండి!</div>
+        <div class="slide-desc">Featured placement + Analytics + WhatsApp leads — ₹299/mo</div>
+        <a href="#pricing" class="slide-btn">View Plans</a>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-dots" id="carouselDots">
+    <span class="dot active" onclick="goToSlide(0)"></span>
+    <span class="dot" onclick="goToSlide(1)"></span>
+    <span class="dot" onclick="goToSlide(2)"></span>
+    <span class="dot" onclick="goToSlide(3)"></span>
+  </div>
+  <button class="carousel-arrow carousel-prev" onclick="carouselPrev()">&#8249;</button>
+  <button class="carousel-arrow carousel-next" onclick="carouselNext()">&#8250;</button>
+</div>
+
+<!-- SCROLLING NEWS TICKER -->
+<div class="news-ticker">
+  <div class="ticker-label">🔴 LIVE</div>
+  <div class="ticker-track-wrap">
+    <div class="ticker-track" id="tickerTrack">
+      <span>🛣️ చౌటుప్పల్ లో కొత్త రహదారి నిర్మాణం ప్రారంభం &nbsp;&nbsp;&nbsp;</span>
+      <span>🏆 మండల స్థాయి క్రీడా పోటీలు ఈ వారం జరుగుతాయి &nbsp;&nbsp;&nbsp;</span>
+      <span>🚌 కొత్త బస్సు రూట్లు: చౌటుప్పల్ నుండి హైదరాబాద్ &nbsp;&nbsp;&nbsp;</span>
+      <span>🌾 రైతుల కోసం ప్రత్యేక వ్యవసాయ రుణాలు అందుబాటులో ఉన్నాయి &nbsp;&nbsp;&nbsp;</span>
+      <span>💻 చౌటుప్పల్ లో IT పార్క్ ఏర్పాటు అవుతుందా? &nbsp;&nbsp;&nbsp;</span>
+      <span>🚴 పాఠశాల పిల్లలకు ఉచిత సైకిళ్ళు పంపిణీ &nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-logo-row">
+      <span class="hero-logo-icon">C</span>
+      <span class="hero-logo-name">Choutuppal App</span>
+      <span class="hero-story-btn">Your Story</span>
+    </div>
+    <div class="hero-badge">మన ఊరి సూపర్ యాప్</div>
+    <h1 class="hero-title">చౌటుప్పల్ కి స్వాగతం!<br/><span class="hero-subtitle">ఇది మన ఊరి డిజిటల్ విప్లవం.</span></h1>
+    <p class="hero-desc">అత్యుత్తమ లోకల్ షాపులు, ప్రీమియం రియల్ ఎస్టేట్ డీల్స్, మరియు తాజా స్థానిక వార్తలు... అన్నీ ఇప్పుడు ఒకే యాప్‌లో, మీ అరచేతిలో!</p>
+    <div class="hero-actions">
+      <a href="#categories" class="btn-explore">Explore Now</a>
+      <a href="https://wa.me/919912353705?text=Hi%20Choutuppal%20App%20Team" target="_blank" class="btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <!-- Emergency SOS -->
+    <div class="sos-section">
+      <div class="sos-title">🚨 Emergency SOS<span class="sos-sub">అత్యవసర సహాయం</span></div>
+      <div class="sos-btns">
+        <a href="tel:108" class="sos-btn"><span class="sos-num">108</span></a>
+        <a href="tel:100" class="sos-btn"><span class="sos-num">100</span></a>
+        <a href="tel:104" class="sos-btn"><span class="sos-num">104</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPIN WHEEL -->
+  <div class="hero-right">
+    <div class="spin-card">
+      <div class="spin-header">
+        <div class="spin-title">🎡 Spin &amp; Win!</div>
+        <div class="spin-desc">Spin the wheel daily to earn coins and rewards!</div>
+        <div class="spin-free">Daily 1 Free Spin</div>
+      </div>
+      <div class="spin-wheel-wrap">
+        <canvas id="wheelCanvas" width="220" height="220"></canvas>
+        <button class="spin-btn" id="spinBtn" onclick="spinWheel()">SPIN</button>
+      </div>
+      <div class="spin-prizes">
+        <span>5</span><span>10</span><span>2</span><span>50</span><span>1</span><span>20</span>
+        <span class="spin-more">+ more prizes!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+  <div class="container">
+    <h2 class="section-title">🏪 Browse Categories</h2>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+</section>
+
+<!-- FEATURED LISTINGS -->
+<section class="section section-alt" id="businesses">
+  <div class="container">
+    <div class="section-header-row">
+      <h2 class="section-title">⭐ Featured Listings</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+    <div class="search-bar">
+      <div class="search-input-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search businesses, services..." oninput="filterBusinesses()"/>
+      </div>
+      <select id="catFilter" onchange="filterBusinesses()">
+        <option value="">All Categories</option>
+      </select>
+    </div>
+    <div class="listings-grid" id="listingsGrid">
+      <div class="loading-state">Loading listings... ⏳</div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL ESTATE -->
+<section class="section" id="realestate">
+  <div class="container">
+    <div class="section-header-row">
+      <h2 class="section-title">🏠 Real Estate</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+    <div class="listings-grid" id="realEstateGrid">
+      <div class="loading-state">Loading properties... ⏳</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section section-alt" id="news">
+  <div class="container">
+    <div class="section-header-row">
+      <h2 class="section-title">📰 Local News</h2>
+      <a href="#" class="view-all">View All</a>
+    </div>
+    <div class="news-grid" id="newsGrid">
+      <div class="loading-state">Loading news... ⏳</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="community">
+  <div class="container">
+    <h2 class="section-title">💬 What People Say</h2>
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section-alt" id="pricing">
+  <div class="container">
+    <h2 class="section-title">💎 Pricing Plans</h2>
+    <p class="section-sub">Choose the right plan for your business</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Basic</div>
+        <div class="price-amount">Free</div>
+        <div class="price-tagline">Get started with basic visibility</div>
+        <ul class="price-features">
+          <li class="yes">1 Business Listing</li>
+          <li class="yes">Basic Profile Page</li>
+          <li class="yes">WhatsApp Button</li>
+          <li class="no">Featured Placement</li>
+          <li class="no">Analytics Dashboard</li>
+          <li class="no">Priority Support</li>
+        </ul>
+        <a href="https://wa.me/919912353705?text=Basic Plan" target="_blank" class="btn-price">Get Started</a>
+      </div>
+      <div class="price-card price-popular">
+        <div class="price-badge">👑 Most Popular</div>
+        <div class="price-name">Pro</div>
+        <div class="price-amount">₹299<span>/mo</span></div>
+        <div class="price-tagline">Grow your business reach</div>
+        <ul class="price-features">
+          <li class="yes">5 Business Listings</li>
+          <li class="yes">Enhanced Profile</li>
+          <li class="yes">WhatsApp + Lead Forms</li>
+          <li class="yes">Featured Placement</li>
+          <li class="yes">Analytics Dashboard</li>
+          <li class="no">Priority Support</li>
+        </ul>
+        <a href="https://wa.me/919912353705?text=Pro Plan" target="_blank" class="btn-price">Subscribe</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Premium</div>
+        <div class="price-amount">₹499<span>/mo</span></div>
+        <div class="price-tagline">Maximum visibility &amp; features</div>
+        <ul class="price-features">
+          <li class="yes">Unlimited Listings</li>
+          <li class="yes">Premium Gold Profile</li>
+          <li class="yes">All Lead Capture Tools</li>
+          <li class="yes">Top Featured Placement</li>
+          <li class="yes">Full Analytics Suite</li>
+          <li class="yes">Priority 24/7 Support</li>
+        </ul>
+        <a href="https://wa.me/919912353705?text=Premium Plan" target="_blank" class="btn-price">Subscribe</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Banner Ad</div>
+        <div class="price-amount">₹99<span>/day</span></div>
+        <div class="price-tagline">Single day promotion blast</div>
+        <ul class="price-features">
+          <li class="yes">24hr Banner Placement</li>
+          <li class="yes">Homepage Visibility</li>
+          <li class="yes">Click-through Tracking</li>
+          <li class="yes">Custom Design Support</li>
+          <li class="yes">A/B Testing</li>
+          <li class="yes">Dedicated Manager</li>
+        </ul>
+        <a href="https://wa.me/919912353705?text=Banner Ad" target="_blank" class="btn-price">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRANCHISE & AGENT -->
+<section class="section franchise-section" id="blog">
+  <div class="container">
+    <div class="franchise-grid">
+      <div class="franchise-card">
+        <h3>Own This App for Your City! 🏙️</h3>
+        <p>Become a City Admin (Franchisee) and run this platform in your city. Manage local businesses, news, and community — earn revenue share from every transaction!</p>
+        <div class="franchise-tags">
+          <span>Revenue Share</span><span>Full Dashboard</span><span>Manage Content</span><span>Grow Community</span>
+        </div>
+        <div class="franchise-fee">Franchisee Fee: ₹50,000<span class="fee-note">Non-refundable</span></div>
+        <a href="https://wa.me/919912353705?text=Franchisee Application" target="_blank" class="btn-franchise">Apply for Franchisee</a>
+      </div>
+      <div class="franchise-card">
+        <h3>Join as an Agent &amp; Earn Commission! 💰</h3>
+        <p>Onboard businesses, sell premium listings, and earn commission on every sale. Work flexibly in your city — no upfront fee required!</p>
+        <div class="franchise-tags">
+          <span>20% on Listings</span><span>15% on Banners</span><span>No Upfront Fee</span><span>Flexible Hours</span>
+        </div>
+        <a href="https://wa.me/919912353705?text=Agent Registration" target="_blank" class="btn-franchise">Join as Agent</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">C</span>
+          <div>
+            <div class="logo-title">Choutuppal App</div>
+          </div>
+        </div>
+        <p>Your super app for Choutuppal. Discover businesses, news, services, and everything local — all in one place.</p>
+        <p class="footer-powered">Powered by <strong>mana.in</strong> — Scalable multi-city platform, white-label ready.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#categories">Explore Businesses</a>
+        <a href="#news">Local News</a>
+        <a href="#blog">Blog</a>
+        <a href="#pricing">List Your Business</a>
+      </div>
+      <div>
+        <h4>Available Cities</h4>
+        <p class="footer-cities-intro">We're expanding! Currently available in:</p>
+        <a href="#">Choutuppal</a>
+        <a href="#" class="coming-soon">+ More cities coming soon...</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>📍 Choutuppal, Telangana</p>
+        <p><a href="tel:9912353705">+91 99123 53705</a></p>
+        <p>hello@choutuppal.app</p>
+        <p>Managed by Mosin Md</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Choutuppal App. All rights reserved. Made with ❤️ in Telangana</p>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav" id="bottomNav">
+  <a href="#home" class="bottom-nav-item active" onclick="setBottomActive(this)">
+    <span class="bnav-icon">🏠</span><span class="bnav-label">Home</span>
+  </a>
+  <a href="#news" class="bottom-nav-item" onclick="setBottomActive(this)">
+    <span class="bnav-icon">🎬</span><span class="bnav-label">Shorts</span>
+  </a>
+  <a href="#categories" class="bottom-nav-item" onclick="setBottomActive(this)">
+    <span class="bnav-icon">📚</span><span class="bnav-label">Learn</span>
+  </a>
+  <a href="#businesses" class="bottom-nav-item" onclick="setBottomActive(this)">
+    <span class="bnav-icon">🔍</span><span class="bnav-label">Search</span>
+  </a>
+  <a href="#" class="bottom-nav-item" onclick="setBottomActive(this)">
+    <span class="bnav-icon">👤</span><span class="bnav-label">You</span>
+  </a>
+</nav>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp-float" href="https://wa.me/919912353705?text=Hi%20Choutuppal%20Team" target="_blank" aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/app.js"></script>
+</body>
+</html>
